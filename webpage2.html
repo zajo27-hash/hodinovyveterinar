@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hodinový veterinárny lekár</title>
+  <style>
+    /* --- GLOBAL STYLES --- */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8ee97; /* soft yellow */
+      color: rgb(142, 12, 142);
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* --- HEADER --- */
+    header {
+        /* background-image: url("https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg"); */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color:  #f1d558;
+        
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 400px;              
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      height: 200px;
+      width: 200px;
+      object-fit: fill;
+      transform: translateY(50px);
+    }
+
+    header h1 {
+       transform: translateY(45px);
+      font-size: 2em;
+    }
+
+    header h3 {
+        transform: translateY(20px);
+        font-size: 1.5em;
+    }
+
+    /*jmeno a telefon v headeru*/
+
+    header h4 {
+        font-size: 1em;
+        padding-bottom: 170px;
+    }
+
+
+    /* --- NAVIGATION BAR --- */
+    nav {
+      background-color: #fdd835;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #fbc02d;
+    }
+
+    /* --- MAIN CONTENT --- */
+    main {
+      display: flex;
+      margin-left: 100px;
+      margin-top: 40px;
+      flex-direction: row;
+      flex: 1;
+      padding: 20px;
+      gap: 100px;
+    }
+
+
+    /* --- SIDEBAR CONTACTS --- */
+    aside {
+    order:2;
+      top: 20px;
+      right: 50px;
+      position: sticky;
+      align-self: flex-start;
+      margin-left: auto;
+      background-color: #fff9c4;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      width: 220px;
+      height: fit-content;
+    }
+
+    aside h2 {
+      margin-top: 0;
+      font-size: 1.8em;
+      margin-bottom: 30px;
+    }
+
+    .sidebar-container {
+        order:2;
+        display: flex;
+        flex-direction: column; /* stack vertically */
+        gap: 300px;
+    }
+
+
+    /* --- CONTENT SECTIONS --- */
+    section {
+        order:1;
+      flex: 1;
+    }
+
+    section h2 {
+      background-color: #f8ee97;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 0
+    }
+
+    section p {
+      background-color: #fff9c4;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    section ul {
+  background-color: #f8ee97;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;                              /* space between boxes */
+  list-style: none;                      /* remove bullets */
+  position: relative;
+}
+
+section li {
+  flex-direction: column;       /* stack image above text */
+  align-items: center;          /* center horizontally */
+  justify-content: flex-end;    /* push text to the bottom */
+  background-color: #fff9c4;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 75%;              /* fill grid cell */
+  aspect-ratio: 1 / 1;      /* make each box a square */
+  font-weight: bold;
+  text-align: center;
+}
+
+section li img {
+  width: 150px;   /* or whatever fits nicely */
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 0;          /* space between image and text */
+}
+
+section li span {
+  margin-top: auto;             /* ensures text stays at bottom */
+}
+
+
+
+    /* --- MOBILE STYLES --- */
+
+/* --- MOBILE STYLES --- */
+@media (max-width: 768px) {
+
+  /* Stack everything vertically */
+  main {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  /* Sidebar: make it full width and non-sticky */
+  aside {
+    position: static;
+    width: 100%;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+  }
+
+  /* Stack sidebars correctly */
+  .sidebar-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Header */
+  header {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  header img {
+    width: 120px;
+    height: 120px;
+    transform: none;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+    transform: none;
+  }
+
+  header h3 {
+    font-size: 1.2em;
+    transform: none;
+  }
+
+  header h4 {
+    padding-bottom: 10px;
+  }
+
+  /* Section layout */
+  section ul {
+    grid-template-columns: 2fr; /* one column for mobile */
+    gap: 15px;
+    padding: 10px;
+  }
+
+  section li {
+    width: 25%;
+    aspect-ratio: auto; /* allow flexible height */
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  section li img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+  }
+
+  section p {
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+<div class="site-wrapper">
+  <!-- HEADER -->
+  <header>
+    <h4>MVDr. Marek Harabasz</h4>
+    <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg" alt="Clinic Logo"> 
+    <h1>Hodinový veterinárny lekár</h1>
+    <h3>Potrebujete pomoct s Vasim zvieratkom u Vas doma?</h3>
+    <h4> tel. 0948 445 961</h4>
+  </header>
+
+  <!-- NAVIGATION -->
+  <!--<nav>
+    <a href="#intro">Úvod</a>
+    <a href="#services">Naše služby</a>
+    <a href="#team">Meet Our Team</a>
+    <a href="#mission">Our Mission</a>
+    <a href="#contact">Kontakt</a>
+  </nav>-->
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- SIDEBAR CONTACT INFO -->
+    <div class="sidebar-container"> 
+    <aside id="contact">
+      <h2 style="color: rgb(142, 12, 142);"></p>Kontaktujte nás</h2>
+      <p><strong style="color: rgb(142, 12, 142);font-size: 1.2em;">Telefón:</strong><br>   0948 445 961</p>
+      <!--<p><strong style="color: rgb(191, 45, 191);font-size: 1.2em;">E-mail:</strong><br>   info@sunnypawsvet.com</p>
+      <p><strong style="color: rgb(191, 45, 191);">Adresa:</strong><br>123 Pet Street,<br>Animal Town</p>-->
+      <p><strong style="color: rgb(142, 12, 142);font-size: 1.2em;">Objednávky:</strong><br>   denne 9:00-17:00<br></p>
+    </aside>
+
+    <aside id="cenik">
+      <h2 style="color: rgb(142, 12, 142)"></p>Ceník výjazdu</h2>
+      <p>Veľké Leváre <strong>5 € </strong></p>
+      <p>Inde <strong>1 €</strong> za každý ujetý kilometer </p>
+      <p><span style="font-size: 0.75em;color: rgb(83, 82, 82);">Cesta sa počíta vždy z Velkých Levár. Ceny sú uvedené bez DPH</p>
+    </aside>
+    </div>
+
+    <!-- MAIN SECTIONS -->
+    <section>
+      <!--<h2 id="intro" style="color: rgb(191, 45, 191);">Úvod</h2>-->
+      <p style="background-color: #f8ee97;font-size: 1.2em;">Sme výjazdová veterinárna služba špecializovaná na malé spoločenské zvieratá. Poskytujeme odbornú starostlivosť priamo u vás doma, vrátane vakcinácií, preventívnych prehliadok a poradenstva. Našou prioritou je pohodlie a bezpečie vašich miláčikov.</p>
+
+      <h2 id="services" style="color: rgb(142, 12, 142);font-size: 2em;">Naše služby</h2>
+      <ul>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Preventívna medicína - vakcinace a odcerveni</span>
+        </li>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Interna medicína</span></li>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Eutanázie</span>
+        </li>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Pet grooming and wellness</span></li>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Objednania suche i vlhke stravy či výživových doplnkov</span></li>
+        <li>
+            <img src="https://img.myloview.cz/nalepky/ilustrace-veterinarni-klinika-logo-s-obrazkem-kocky-a-psa-se-srdcem-a-lekarsky-kriz-400-139871860.jpg">
+            <br><span>Objednania preparatu proti vnutornym a vonkajsim parazitum</span></li>
+      </ul>
+
+      <!--<h2 id="team" style="color: rgb(191, 45, 191);">Ceník</h2>
+      <p>Velké Levare 5€. Jinak 1€ za každý ujetý kilometer. <br> <span style="font-size: 0.75em;color: rgb(83, 82, 82);">Cesta sa počíta vždy z Velkých Levár. Ceny sú uvedené bez DPH</p>--> 
+
+      <!--<h2 id="mission" style="color: rgb(191, 45, 191);">Our Mission</h2>
+      <p>We aim to promote pet wellness through high-quality medical care, education, and a warm, friendly environment where pets and owners feel at home.</p>-->
+    </section>
+  </main>
+
+</div>
+</body>
+</html>
